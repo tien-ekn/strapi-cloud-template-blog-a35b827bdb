@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dynamic_zone": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.hero",
+        "shared.events",
+        "shared.image-text",
+        "shared.introduction",
+        "shared.media",
+        "shared.posts-grid",
+        "shared.slider",
+        "shared.seo"
+      ]
+    }
+  }
+}

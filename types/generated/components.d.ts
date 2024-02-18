@@ -1,5 +1,57 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SharedEvents extends Schema.Component {
+  collectionName: 'components_shared_events';
+  info: {
+    displayName: 'Events';
+    icon: 'bell';
+  };
+  attributes: {
+    title: Attribute.String;
+    articles: Attribute.Relation<
+      'shared.events',
+      'oneToMany',
+      'api::article.article'
+    >;
+  };
+}
+
+export interface SharedHero extends Schema.Component {
+  collectionName: 'components_shared_heroes';
+  info: {
+    displayName: 'Hero';
+    icon: 'alien';
+  };
+  attributes: {
+    hero_image: Attribute.Media;
+  };
+}
+
+export interface SharedImageText extends Schema.Component {
+  collectionName: 'components_shared_image_texts';
+  info: {
+    displayName: 'ImageText';
+    icon: 'archive';
+  };
+  attributes: {
+    title: Attribute.Text;
+    text: Attribute.Blocks;
+    image: Attribute.Media;
+  };
+}
+
+export interface SharedIntroduction extends Schema.Component {
+  collectionName: 'components_shared_introductions';
+  info: {
+    displayName: 'Introduction';
+    icon: 'apps';
+  };
+  attributes: {
+    title: Attribute.String;
+    introduction: Attribute.Blocks;
+  };
+}
+
 export interface SharedMedia extends Schema.Component {
   collectionName: 'components_shared_media';
   info: {
@@ -8,6 +60,21 @@ export interface SharedMedia extends Schema.Component {
   };
   attributes: {
     file: Attribute.Media;
+  };
+}
+
+export interface SharedPostsGrid extends Schema.Component {
+  collectionName: 'components_shared_posts_grids';
+  info: {
+    displayName: 'Posts Grid';
+    icon: 'arrowDown';
+  };
+  attributes: {
+    articles: Attribute.Relation<
+      'shared.posts-grid',
+      'oneToMany',
+      'api::article.article'
+    >;
   };
 }
 
@@ -65,7 +132,12 @@ export interface SharedSlider extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'shared.events': SharedEvents;
+      'shared.hero': SharedHero;
+      'shared.image-text': SharedImageText;
+      'shared.introduction': SharedIntroduction;
       'shared.media': SharedMedia;
+      'shared.posts-grid': SharedPostsGrid;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
